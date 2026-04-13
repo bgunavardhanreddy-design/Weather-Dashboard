@@ -1,6 +1,5 @@
-// Get your free API key from: https://openweathermap.org/api
-// Replace 'YOUR_API_KEY' below with your actual API key
-const API_KEY = 'YOUR_API_KEY'; // 🔴 REPLACE THIS with your actual API key
+
+const API_KEY = '1eace8c1c102e2cb5be32515d0fa3c58'; 
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 // DOM Elements
@@ -12,10 +11,10 @@ const forecastDiv = document.getElementById('forecast');
 const recentSearchesDiv = document.getElementById('recentSearches');
 const errorMsgDiv = document.getElementById('errorMsg');
 
-// Store recent searches in localStorage
+
 let recentCities = JSON.parse(localStorage.getItem('recentCities')) || [];
 
-// Event Listeners
+
 searchBtn.addEventListener('click', () => {
     const city = cityInput.value.trim();
     if (city) {
@@ -191,5 +190,3 @@ function showError(message) {
 // Load recent searches on page load
 displayRecentSearches();
 
-// Optional: Load default city on startup
-// getWeatherData('London');
