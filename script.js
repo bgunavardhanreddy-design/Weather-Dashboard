@@ -1,5 +1,5 @@
 
-const API_KEY = '1eace8c1c102e2cb5be32515d0fa3c58'; 
+const API_KEY = '949103b596ef2173f3d626faa72be278'; 
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 // DOM Elements
@@ -43,12 +43,13 @@ async function getWeatherData(city) {
             `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`
         );
         
-        if (!currentRes.ok) {
-            throw new Error('City not found');
-        }
-        
-        const currentData = await currentRes.json();
-        
+      const currentData = await currentRes.json();
+
+        if (currentData.cod !== 200) {
+    throw new Error(currentData.message);
+      
+      }
+                
         // Fetch 5-day forecast
         const forecastRes = await fetch(
             `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`
